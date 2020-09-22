@@ -11,18 +11,19 @@
     <title>BuzzQuizz</title>
 </head>
 <body>
-    <section class='login-page'>
+    <section class='login-screen'>
         <div class="container">
             <h1 class="main-title">BuzzQuizz</h1>
             <h2 class="main-subtitle">O Quiz que você Quizzer</h2>
             <div class="forms-container forms-spacing">
                 <input type="email" name="E-mail" id="email" placeholder="E-mail">
                 <input type="password" name="Senha" id="password" placeholder="Senha">
-                <button type="submit">Entrar</button>
+                <button type="submit" onclick="signIn()">Entrar</button>
             </div>
         </div>
         <div class="floating-image-container"></div>
     </section>
-    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./assets/js/login.js"></script>
 </body>
 </html>

@@ -2,17 +2,26 @@
     margin-top: .5rem;
 }
 
-.login-page {
+.login-screen {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 100vh;
     padding: 1.5rem;
+    
     visibility: visible;
+    opacity: 1;
+    transition: visibility 150ms ease-in-out,
+    opacity 150ms ease-in-out;
 }
 
-.login-page .container {
+.hide-screen {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.login-screen .container {
     margin-right: 1rem;
 }
 
@@ -78,10 +87,10 @@
 
 @media (max-width: 830px) {
     
-    .login-page{
+    .login-screen{
         flex-direction: column;
     }
-    .login-page .container {
+    .login-screen .container {
         margin-right: 0;
     }
     .floating-image-container {
