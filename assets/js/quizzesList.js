@@ -19,3 +19,8 @@ function renderQuizz(quizz) {
     var ul = document.querySelector(".quizzes-list ul");
     ul.appendChild(li);
 }
+
+function leaveQuizzesListScreen (){
+    const quizzesListScreen = document.querySelector(".quizzes-list");
+    quizzesListScreen.classList.add('hide-screen');
+}

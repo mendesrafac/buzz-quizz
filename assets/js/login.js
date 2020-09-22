@@ -24,8 +24,7 @@ function inputHandler () {
     request.then(processToken).catch(errorHandler)
 }
 
-function errorHandler (response) {
-    console.log(response);
+function errorHandler () {
     alert("E-mail / senha incorretos");
     enableBtn();
 }

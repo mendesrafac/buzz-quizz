@@ -1,0 +1,98 @@
+.create-quizz {
+    position: absolute;
+    top: 5rem;
+    left: 0;
+
+    width: 100vw;
+    min-height: calc(100vh - 5rem);
+    padding: 5rem;
+
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 150ms ease-in-out,
+    opacity 150ms ease-in-out,
+    padding 150ms ease-in-out;
+
+    background-color: var(--color-dark-gray);
+
+    display: flex;
+    justify-content: center;
+}
+.create-quizz .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 40rem;
+}
+.create-quizz .container .questions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.create-quizz .container > input {
+    width: 100%;
+    outline-style: none;
+    border: none;
+    border-radius: .5rem;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+.create-question-container h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+.create-question-container {
+    background-color: var(--color-off-white);
+    padding: 1rem;
+    border-radius: .5rem;
+    width: 100%;
+}
+.create-question-container > input {
+    width: 100%;
+}
+.create-question-container input {
+    padding: .5rem;
+    border: none;
+    outline-style: none;
+    border-radius: .5rem;
+    font-size: .8rem;
+}
+.create-question-container li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.create-question-container li > input,
+.create-question-container li > input::placeholder {
+    width: 18.7rem;
+    color: var(--color-dark-gray);
+}
+
+.create-quizz .container .add-icon {
+    font-size: 3rem;
+    color: var(--color-off-white);
+}
+
+@media (max-width: 830px) {
+    .create-quizz {
+        padding: 1.5rem;
+    }
+}
+
+.right {
+    background-color: var(--color-pastel-green);
+}
+.wrong {
+    background-color: var(--color-light-pink);
+}
+
+@media (max-width: 700px){
+    .create-question-container li {
+        flex-direction: column;
+    }
+    .create-question-container li > input {
+        margin-top: .5rem;
+        width: 100%;
+    }
+}

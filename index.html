@@ -9,9 +9,30 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/login.css">
     <link rel="stylesheet" href="./assets/css/quizzesList.css">
+    <link rel="stylesheet" href="./assets/css/createQuizz.css">
     <title>BuzzQuizz</title>
 </head>
 <body>
+    <header class='hide-screen'>
+        <h1 class="title">BuzzQuizz</h1>
+    </header>
+    <section class="create-quizz">
+        <div class="container spacing">
+            <input type="text" name="title" id="quizz-title" placeholder="Digite o título do seu quizz">
+            <section class='questions spacing'></section>
+            <ion-icon name="add-circle" class="add-icon" onclick='createQuestion()'></ion-icon>
+            <section class="levels spacing"></section>
+            <ion-icon name="add-circle" class="add-icon" onclick='createLevel()'></ion-icon>
+        </div>
+    </section>
+    <section class="quizzes-list">
+        <ul>
+            <li class="create-quiz spacing" onclick="leaveQuizzesListScreen()">
+                <h2>Novo Quizz</h2>
+                <ion-icon name="add-circle" class='add-icon'></ion-icon>
+            </li>
+        </ul>
+    </section>
     <section class='login-screen'>
         <div class="container">
             <h1 class="main-title">BuzzQuizz</h1>
@@ -23,17 +44,6 @@
             </div>
         </div>
         <div class="floating-image-container"></div>
-    </section>
-    <header class='hide-screen'>
-        <h1 class="title">BuzzQuizz</h1>
-    </header>
-    <section class="quizzes-list">
-        <ul>
-            <li class="create-quiz spacing" onclick="createQuizz()">
-                <h2>Novo Quizz</h2>
-                <ion-icon name="add-circle" class='add-icon'></ion-icon>
-            </li>
-        </ul>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
