@@ -6,6 +6,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 2;
 
     display: flex;
     align-items: center;
@@ -13,12 +14,13 @@
     width: 100vw;
     height: 100vh;
     padding: 1.5rem;
-    z-index: 999;
     
     visibility: visible;
     opacity: 1;
     transition: visibility 150ms ease-in-out,
     opacity 150ms ease-in-out;
+
+    background-color: var(--color-dark-gray);
 }
 
 .login-screen .container {
@@ -67,7 +69,7 @@
     width: 40%;
     padding: .5rem;
     border-radius: .2rem;
-    background-color: var(--color-light-pink);
+    background-color: var(--color-dark-pink);
     color: var(--color-off-white);
     font-weight: 700;
     font-size: 1rem;
@@ -82,6 +84,11 @@
     height: 20rem;
     z-index: 3;
     margin-left: 1rem;
+}
+
+.hide-screen {
+    visibility: hidden;
+    opacity: 0;
 }
 
 

@@ -1,5 +1,5 @@
 var user = {};
-var access = {};
+var config = { headers: { }};
 
 function signIn () {
     user.email = document.querySelector(".forms-container #email").value;
@@ -24,17 +24,19 @@ function inputHandler () {
     request.then(processToken).catch(errorHandler)
 }
 
-function errorHandler () {
+function errorHandler (response) {
+    console.log(response);
     alert("E-mail / senha incorretos");
     enableBtn();
 }
 
 function processToken (response){
-    access.token = response.data.token;
-    changeScreen();
+    config.headers['User-Token'] = response.data.token;
+    leaveMainScreen();
+    getQuizzes();
 }
 
-function changeScreen () {
+function leaveMainScreen () {
     const loginScreen = document.querySelector(".login-screen");
     const header = document.querySelector('header');
     
