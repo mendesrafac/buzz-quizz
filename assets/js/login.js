@@ -36,7 +36,10 @@ function processToken (response){
 
 function changeScreen () {
     const loginScreen = document.querySelector(".login-screen");
+    const header = document.querySelector('header');
+    
     loginScreen.classList.add('hide-screen');
+    header.classList.remove('hide-screen');
 }
 
 function disableBtn () {

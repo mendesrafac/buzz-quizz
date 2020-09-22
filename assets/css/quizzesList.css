@@ -1,0 +1,16 @@
+.quizzes-list {
+    position: absolute;
+    top: 5rem;
+    left: 0;
+
+    width: 100vw;
+    height: calc(100vh - 5rem);
+    padding: 1.5rem;
+
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 150ms ease-in-out,
+    opacity 150ms ease-in-out;
+}
+
+
