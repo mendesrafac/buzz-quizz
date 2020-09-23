@@ -7,7 +7,12 @@ function getQuizzes(){
 
 function processQuizzes (response) {
     quizzes = [...response.data];
+    renderNewQuizzBtn();
     for (quizz of quizzes) renderQuizz(quizz);
+}
+function renderNewQuizzBtn (){
+    var ul = document.querySelector(".quizzes-list ul");
+    ul.innerHTML =`<li class="create-quiz spacing" onclick="leaveQuizzesListScreen()"><h2>Novo Quizz</h2><ion-icon name="add-circle" class='add-icon'></ion-icon></li>`
 }
 
 function renderQuizz(quizz) {
@@ -21,7 +26,8 @@ function renderQuizz(quizz) {
 }
 
 function leaveQuizzesListScreen (){
+    createQuestion();
+    createLevel();
     document.querySelector(".quizzes-list").classList.add('hide-screen');
-
     document.querySelector(".create-quizz").style.display = 'flex';
 }
