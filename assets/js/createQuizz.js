@@ -8,7 +8,7 @@ function processQuizz() {
     getLevels();
 
     var quizz = {
-        title: document.querySelector('#quizz-title').value,
+        title: validateStr(document.querySelector('#quizz-title').value),
         data: {
             questions: questions,
             levels: levels
@@ -16,7 +16,6 @@ function processQuizz() {
     }
 
     publishQuizz(quizz);
-    resetQuizzCreation();
 }
 
 function getQuestions () {
@@ -33,16 +32,16 @@ function getLevels () {
 }
 function processQuestion (preProcessQuestion) {
     var question = {
-        title: preProcessQuestion.querySelector('#question-title').value,
+        title: validateStr(preProcessQuestion.querySelector('#question-title').value),
         answers: getAnswers(preProcessQuestion)
     }
     return question;
 }
 function processLevel (preProcessLevel) {
     var level = {
-        title: preProcessLevel.querySelector('#level-title').value,
+        title: validateStr(preProcessLevel.querySelector('#level-title').value),
         image: preProcessLevel.querySelector('input[type=url]'),
-        description: preProcessLevel.querySelector('textarea').value,
+        description: validateStr(preProcessLevel.querySelector('textarea').value),
         minPercent: preProcessLevel.querySelector('#min-percent').value,
         maxPercent: preProcessLevel.querySelector('#max-percent').value
     }
@@ -60,15 +59,21 @@ function getAnswers (preProcessQuestion) {
 
 function getAnswer (preProcessAnswer) {
     var answer = {
-        value: preProcessAnswer.querySelector('input[type=text]').value,
-        image: preProcessAnswer.querySelector('input[type=url]').value
+        value: validateStr(preProcessAnswer.querySelector('input[type=text]').value),
+        image: validateStr(preProcessAnswer.querySelector('input[type=url]').value)
     }
     return answer;
 }
 
 function publishQuizz(quizz) {
-    const request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes', quizz, config);
-    leaveCreateQuizzScreen();
+    if(!validateQuizz()) {
+        alert("Adicione um ponto de interrogação somente no final de cada pergunta.");
+        return;
+    }
+    else {
+        const request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes', quizz, config);
+        request.then(leaveCreateQuizzScreen).then(resetQuizzCreation);
+    }
 }
 
 function createQuestion(){
