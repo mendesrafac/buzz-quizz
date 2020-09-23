@@ -28,7 +28,7 @@ function getQuestions () {
 function getLevels () {
     var preProcessLevels = Array.from(document.querySelectorAll('.levels > *'));
     for (element of preProcessLevels){
-        levels.push(preProcessLevel(element));
+        levels.push(processLevel(element));
     }
 }
 function processQuestion (preProcessQuestion) {
@@ -38,7 +38,7 @@ function processQuestion (preProcessQuestion) {
     }
     return question;
 }
-function preProcessLevel (preProcessLevel) {
+function processLevel (preProcessLevel) {
     var level = {
         title: preProcessLevel.querySelector('#level-title').value,
         image: preProcessLevel.querySelector('input[type=url]'),
