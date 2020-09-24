@@ -1,0 +1,41 @@
+.result-screen h2 {
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Merriweather', serif;
+    text-align: center;
+    background-color: var(--color-off-white);
+}
+.result-screen .result-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.result-screen .result-container img {
+    max-width: 19rem;
+}
+
+.result-screen .result-container .text-container {
+    max-width: 19rem;
+    color: var(--color-off-white);
+}
+.text-container h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: .5rem 0;
+}
+@media (max-width: 700px) {
+    .result-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .result-container img {
+        margin-top: 2rem;
+        width: 100%;
+    }
+    .result-container .text-container {
+        width: 100%;
+    }
+    
+}

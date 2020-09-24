@@ -1,25 +1,25 @@
 var selectedQuizz;
 var countQuestion = 0;
 var rightAnswers = 0;
+var hasClicked = false;
 
 function openQuizz(ele) {
+    rightAnswers = 0;
     renderQuestionScreen();
     renderQuizzTitle(ele);
-
 }
 
-function renderResultScreen () {
-    console.log('res');
-}
-
-function changeQuestionScreen () {
-    if (++countQuestion === selectedQuizz.data.questions.length)
-        renderResultScreen();
-    else {
-        question = document.querySelector('.quizz .container article');
+function changeQuestionScreen() {
+    for(question of Array.from(document.querySelectorAll('.quizz .container article'))){
         question.classList.add('hide-screen');
+    }
+    
+    if (++countQuestion === selectedQuizz.data.questions.length)
+        setTimeout(renderResultScreen, 200);
+    else {
         setTimeout(resetsQuestionScreen, 200);
     }
+    hasClicked = false;
 }
 
 function resetsQuestionScreen() {
@@ -27,18 +27,21 @@ function resetsQuestionScreen() {
     renderQuestion();
 }
 
-function processClickedAnswer() {
-    var answers = Array.from(document.querySelectorAll('.quizz .container article .options-container > *'));
-    for (answer of answers) {
-        if (answer.id === 'right'){
-            answer.querySelector('h3').classList.add('right');
-            rightAnswers++;
+function processClickedAnswer(ele) {
+    if (ele.id === 'right') rightAnswers++;
+    if (!hasClicked) {
+        hasClicked = true;
+        var answers = Array.from(document.querySelectorAll('.quizz .container article .options-container > *'));
+        for (answer of answers) {
+            if (answer.id === 'right') {
+                answer.querySelector('h3').classList.add('right');
+            }
+            else {
+                answer.querySelector('h3').classList.add('wrong');
+            }
         }
-        else {
-            answer.querySelector('h3').classList.add('wrong');
-        }
+        setTimeout(changeQuestionScreen, 2000);
     }
-    setTimeout(changeQuestionScreen, 2000);
 }
 
 function selectQuizz() {
@@ -63,18 +66,18 @@ function renderQuestion() {
     var ul = document.createElement('ul');
     ul.classList.add('options-container');
 
-    for (answer of answers){
+    for (answer of answers) {
         ul.innerHTML += answer;
-    } 
+    }
     article.appendChild(ul);
 }
 
-function renderedAnswers (question){
+function renderedAnswers(question) {
     var rendered = [];
     var rightAnswer = ` <li id='right' onclick="processClickedAnswer(this)"><img src="${question.answers[0].image}" alt=""><h3 class="answer">${question.answers[0].value}</h3></li>`
     rendered.push(rightAnswer);
 
-    for (i = 1; i < question.answers.length; i++){
+    for (i = 1; i < question.answers.length; i++) {
         wrongAnswer = ` <li onclick="processClickedAnswer(this)"><img src="${question.answers[i].image}" alt=""><h3 class="answer">${question.answers[i].value}</h3></li>`
         rendered.push(wrongAnswer);
     }

@@ -40,7 +40,7 @@ function processQuestion (preProcessQuestion) {
 function processLevel (preProcessLevel) {
     var level = {
         title: validateStr(preProcessLevel.querySelector('#level-title').value),
-        image: preProcessLevel.querySelector('input[type=url]'),
+        image: preProcessLevel.querySelector('input[type=url]').value,
         description: validateStr(preProcessLevel.querySelector('textarea').value),
         minPercent: preProcessLevel.querySelector('#min-percent').value,
         maxPercent: preProcessLevel.querySelector('#max-percent').value
