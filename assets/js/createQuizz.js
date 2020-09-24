@@ -72,8 +72,12 @@ function publishQuizz(quizz) {
     }
     else {
         const request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes', quizz, config);
-        request.then(leaveCreateQuizzScreen).then(resetQuizzCreation);
+        request.then(leaveCreateQuizzScreen).then(resetQuizzCreation).catch(publishErrorHandler);
     }
+}
+
+function publishErrorHandler(){
+    return;    
 }
 
 function createQuestion(){
@@ -85,10 +89,10 @@ function createQuestion(){
     question.innerHTML = `<h2>Pergunta ${countQuestions}</h2>`;
     question.innerHTML += '<input type="text" name="question" id="question-title" placeholder="Digite a pergunta">';
     question.innerHTML += `<ul class="answers-container forms-spacing">
-    <li><input type="text" name="answer" id="answer-1" class='right' placeholder="Digite a resposta correta"><input type="url" name="answer" class='right' placeholder="Link para imagem correta"></li>
-    <li><input type="text" name="answer" id="answer-2" class='wrong' placeholder="Digite uma resposta errada 1"><input type="url" name="answer" class='wrong' placeholder="Link para imagem errada 1"></li>
-    <li><input type="text" name="answer" id="answer-3" class='wrong' placeholder="Digite uma resposta errada 2"><input type="url" name="answer" class='wrong' placeholder="Link para imagem errada 2"></li>
-    <li><input type="text" name="answer" id="answer-4" class='wrong' placeholder="Digite uma resposta errada 3"><input type="url" name="answer" class='wrong' placeholder="Link para imagem errada 3"></li></ul>`;
+    <li><input type="text" name="answer" id="right-answer" class='right' placeholder="Digite a resposta correta"><input type="url" name="answer" class='right' placeholder="Link para imagem correta"></li>
+    <li><input type="text" name="answer" class='wrong' placeholder="Digite uma resposta errada 1"><input type="url" name="answer" class='wrong' placeholder="Link para imagem errada 1"></li>
+    <li><input type="text" name="answer" class='wrong' placeholder="Digite uma resposta errada 2"><input type="url" name="answer" class='wrong' placeholder="Link para imagem errada 2"></li>
+    <li><input type="text" name="answer" class='wrong' placeholder="Digite uma resposta errada 3"><input type="url" name="answer" class='wrong' placeholder="Link para imagem errada 3"></li></ul>`;
   
     container.appendChild(question);
 }
@@ -119,5 +123,5 @@ function resetQuizzCreation () {
 function leaveCreateQuizzScreen(){
     getQuizzes();
     document.querySelector(".quizzes-list").classList.remove('hide-screen');
-    document.querySelector(".create-quizz").style.display = 'none';
+    /*document.querySelector(".create-quizz").style.display = 'none';*/
 }

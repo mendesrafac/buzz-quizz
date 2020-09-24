@@ -15,10 +15,17 @@
 
     background-color: var(--color-dark-gray);
 
-    display: none;
+    display: flex;
     justify-content: center;
     overflow-y: scroll;
 }
+
+.hide-screen {
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+}
+
 .create-quizz .container {
     display: flex;
     align-items: center;

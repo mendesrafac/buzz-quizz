@@ -20,7 +20,7 @@ function renderQuizz(quizz) {
     var quizzTitle = document.createElement('h2');
     quizzTitle.innerText = quizz.title;
     li.appendChild(quizzTitle);
-    
+    li.setAttribute('onclick','openQuizz(this)');
     var ul = document.querySelector(".quizzes-list ul");
     ul.appendChild(li);
 }
@@ -29,5 +29,4 @@ function leaveQuizzesListScreen (){
     createQuestion();
     createLevel();
     document.querySelector(".quizzes-list").classList.add('hide-screen');
-    document.querySelector(".create-quizz").style.display = 'flex';
 }
