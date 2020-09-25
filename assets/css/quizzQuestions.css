@@ -80,7 +80,7 @@
     border-radius: 1rem;
 }
 
-.quizz article .options-container li .answer {
+.quizz article .options-container li h3 {
     width: 100%;
     padding: 1rem;
     font-weight: 700;
@@ -88,9 +88,12 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    transition: background-color 150ms ease;
+    
 }
-
+.unanswered {
+    transition: background-color 150ms ease;
+    background-color: var(--color-off-white);
+}
 .right {
     background-color: var(--color-pastel-green);
 }

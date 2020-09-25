@@ -5,6 +5,7 @@ var hasClicked = false;
 
 function openQuizz(ele) {
     rightAnswers = 0;
+    countQuestion = 0;
     renderQuestionScreen();
     renderQuizzTitle(ele);
 }
@@ -34,9 +35,11 @@ function processClickedAnswer(ele) {
         var answers = Array.from(document.querySelectorAll('.quizz .container article .options-container > *'));
         for (answer of answers) {
             if (answer.id === 'right') {
+                answer.querySelector('h3').classList.remove('unanswered');
                 answer.querySelector('h3').classList.add('right');
             }
             else {
+                answer.querySelector('h3').classList.remove('unanswered');
                 answer.querySelector('h3').classList.add('wrong');
             }
         }
@@ -74,11 +77,11 @@ function renderQuestion() {
 
 function renderedAnswers(question) {
     var rendered = [];
-    var rightAnswer = ` <li id='right' onclick="processClickedAnswer(this)"><img src="${question.answers[0].image}" alt=""><h3 class="answer">${question.answers[0].value}</h3></li>`
+    var rightAnswer = ` <li id='right' onclick="processClickedAnswer(this)"><img src="${question.answers[0].image}" alt=""><h3 class="unanswered">${question.answers[0].value}</h3></li>`
     rendered.push(rightAnswer);
 
     for (i = 1; i < question.answers.length; i++) {
-        wrongAnswer = ` <li onclick="processClickedAnswer(this)"><img src="${question.answers[i].image}" alt=""><h3 class="answer">${question.answers[i].value}</h3></li>`
+        wrongAnswer = ` <li onclick="processClickedAnswer(this)"><img src="${question.answers[i].image}" alt=""><h3 class="unanswered">${question.answers[i].value}</h3></li>`
         rendered.push(wrongAnswer);
     }
     return rendered.sort(() => { return .5 - Math.random(); });

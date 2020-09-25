@@ -29,4 +29,15 @@ function leaveQuizzesListScreen (){
     createQuestion();
     createLevel();
     document.querySelector(".quizzes-list").classList.add('hide-screen');
+    document.querySelector(".create-quizz").classList.remove('hide-screen');
+    
+}
+
+function goToQuizzesListScreen() {
+    getQuizzes();
+    resetQuizzCreation();
+    countQuestion = 0;
+    rightAnswers = 0;
+    document.querySelector(".quizz .container").innerHTML = '';
+    document.querySelector(".quizzes-list").classList.remove('hide-screen');
 }
